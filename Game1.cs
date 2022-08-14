@@ -209,9 +209,8 @@ namespace SpaceEngineersShipBuilder
 
 
                     Filter = "*.fbx",
-                    //Folder = "C:/Users/ethan/AppData/Roaming/SpaceEngineers/Blueprints/local",
-                    Folder = "E:/SteamLibrary/steamapps/common/SpaceEngineersModSDK/OriginalContent/Models/Cubes/large"
-                    //HorizontalAlignment = HorizontalAlignment.Left
+                    //Folder = "E:/SteamLibrary/steamapps/common/SpaceEngineersModSDK/OriginalContent/Models/Cubes/large"
+                    Folder = ""
                 };
 
                 dialog.Closed += (s, a) =>
