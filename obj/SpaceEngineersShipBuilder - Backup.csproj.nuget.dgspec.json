@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\SpaceEngineersShipBuilder - Backup.csproj": {}
+  },
+  "projects": {
+    "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\SpaceEngineersShipBuilder - Backup.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\SpaceEngineersShipBuilder - Backup.csproj",
+        "projectName": "SpaceEngineersShipBuilder - Backup",
+        "projectPath": "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\SpaceEngineersShipBuilder - Backup.csproj",
+        "packagesPath": "C:\\Users\\ethan\\.nuget\\packages\\",
+        "outputPath": "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ethan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AssetManagementBase": {
+              "target": "Package",
+              "version": "[0.5.3, )"
+            },
+            "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.0.1641, )"
+            },
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.0.1641, )"
+            },
+            "Myra": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.25, 3.1.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

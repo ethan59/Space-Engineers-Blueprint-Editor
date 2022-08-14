@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/cube.fbx","E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/bin/DesktopGL/Content/cube.xnb","ModelProcessor","ModelContent",11708,1498,0.2100337
+"E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/pixilart-drawing.png","E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/bin/DesktopGL/Content/pixilart-drawing.xnb","TextureProcessor","Texture2DContent",2370,4181,0.2055114
