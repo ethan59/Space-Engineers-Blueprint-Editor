@@ -95,7 +95,7 @@ namespace SpaceEngineersShipBuilder
                 RowSpacing = 8,
                 ColumnSpacing = 8
             };
-            int appe;
+            
             grid.ColumnsProportions.Add(new Proportion(ProportionType.Auto));
             grid.ColumnsProportions.Add(new Proportion(ProportionType.Auto));
             grid.RowsProportions.Add(new Proportion(ProportionType.Auto));
