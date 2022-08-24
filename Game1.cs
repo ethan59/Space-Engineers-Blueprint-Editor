@@ -7,8 +7,8 @@ using Myra.Graphics2D.UI.File;
 using System.IO;
 using System;
 /*using AssetManagementBase;
-using AssetManagementBase.Utility;*/
-
+using AssetManagementBase.Utility;
+*/
 namespace SpaceEngineersShipBuilder
 {
     public class Game1 : Game
@@ -30,8 +30,6 @@ namespace SpaceEngineersShipBuilder
         public Model model;
 
         public Models models;
-
-
 
         //Camera
         Vector3 camTarget;
@@ -58,6 +56,7 @@ namespace SpaceEngineersShipBuilder
         {
             // TODO: Add your initialization logic here
 
+
             _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
             _graphics.IsFullScreen = true;
@@ -71,9 +70,8 @@ namespace SpaceEngineersShipBuilder
             // TODO: use this.Content to load your game content here
             UI();
 
-            /*model = Content.Load<Model>("cube");
-            otherTexture = Content.Load<Texture2D>("pixilart-drawing");*/
-           // model = Content.Load<Model>("cube");
+            model = Content.Load<Model>("cube");
+            otherTexture = Content.Load<Texture2D>("pixilart-drawing");
 
             base.LoadContent();
 
@@ -170,7 +168,6 @@ namespace SpaceEngineersShipBuilder
                 GridRow = 0,
                 Spacing = 10
             };
-
 
             var titleContainer = new Panel
             {
@@ -323,7 +320,8 @@ namespace SpaceEngineersShipBuilder
                 }
 
                 //trasnlation for the camera;
-                view = Matrix.CreateTranslation(camPosition) * Matrix.CreateRotationY(mouseX / GraphicsDevice.Viewport.Width * 2) * Matrix.CreateRotationX(mouseY /*/ GraphicsDevice.Viewport.Height * MathHelper.Clamp(1, -90, 90)*/);
+                view = Matrix.CreateTranslation(camPosition) * Matrix.CreateRotationY(mouseX / GraphicsDevice.Viewport.Width);
+                //view *= Matrix.CreateRotationX(mouseY /*/ GraphicsDevice.Viewport.Height * MathHelper.Clamp(1, -90, 90)*/);
 
                 mouseInput = true;
             }
@@ -334,7 +332,7 @@ namespace SpaceEngineersShipBuilder
         protected override void Draw(GameTime gameTime)
         {
             //The color of the background
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Gray);
 
             DrawModel(model, world, view, projection);
 
@@ -348,7 +346,7 @@ namespace SpaceEngineersShipBuilder
 
         public void DrawModel(Model model, Matrix world, Matrix view, Matrix projection)
         {
-            /*foreach (ModelMesh mesh in model.Meshes)
+            foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
@@ -359,7 +357,7 @@ namespace SpaceEngineersShipBuilder
                     effect.LightingEnabled = false;
                     effect.DirectionalLight0.Enabled = true;
                     effect.AmbientLightColor = new Vector3(0.2f, 0.2f, 0.2f);
-                    //effect.EmissiveColor = new Vector3(0, 0, 0);
+                    effect.EmissiveColor = new Vector3(0, 0, 0);
                     effect.Texture = otherTexture;
                     effect.TextureEnabled = true;
                     effect.FogEnabled = true;
@@ -370,7 +368,7 @@ namespace SpaceEngineersShipBuilder
                     //effect.Texture = otherTexture;
                 }
                 mesh.Draw();
-            }*/
+            }
         }
 
     }
