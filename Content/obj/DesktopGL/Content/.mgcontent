@@ -4,8 +4,6 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/cube.fbx</File>
-    <File>E:/VisualStudioApps/SpaceEngineersShipBuilder/Content/pixilart-drawing.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

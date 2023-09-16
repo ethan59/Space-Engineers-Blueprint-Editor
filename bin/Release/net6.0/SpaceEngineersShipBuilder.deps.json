@@ -1,0 +1,227 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SpaceEngineersShipBuilder/1.0.0": {
+        "dependencies": {
+          "MonoGame.Content.Builder.Task": "3.8.1.303",
+          "MonoGame.Framework.DesktopGL": "3.8.1.303",
+          "Myra": "1.4.2"
+        },
+        "runtime": {
+          "SpaceEngineersShipBuilder.dll": {}
+        }
+      },
+      "Cyotek.Drawing.BitmapFont/2.0.4": {
+        "runtime": {
+          "lib/net5.0/Cyotek.Drawing.BitmapFont.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.0.4.0"
+          }
+        }
+      },
+      "FontStashSharp.Base/1.1.6": {
+        "runtime": {
+          "lib/netstandard2.0/FontStashSharp.Base.dll": {
+            "assemblyVersion": "1.1.6.0",
+            "fileVersion": "1.1.6.0"
+          }
+        }
+      },
+      "FontStashSharp.MonoGame/1.1.6": {
+        "dependencies": {
+          "Cyotek.Drawing.BitmapFont": "2.0.4",
+          "FontStashSharp.Base": "1.1.6",
+          "FontStashSharp.Rasterizers.StbTrueTypeSharp": "1.1.6",
+          "StbImageSharp": "2.27.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FontStashSharp.MonoGame.dll": {
+            "assemblyVersion": "1.1.6.0",
+            "fileVersion": "1.1.6.0"
+          }
+        }
+      },
+      "FontStashSharp.Rasterizers.StbTrueTypeSharp/1.1.6": {
+        "dependencies": {
+          "FontStashSharp.Base": "1.1.6",
+          "StbTrueTypeSharp": "1.26.10"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FontStashSharp.Rasterizers.StbTrueTypeSharp.dll": {
+            "assemblyVersion": "1.1.6.0",
+            "fileVersion": "1.1.6.0"
+          }
+        }
+      },
+      "info.lundin.math.dll/1.2.6": {
+        "runtime": {
+          "lib/netstandard2.0/info.lundin.math.dll": {
+            "assemblyVersion": "1.2.6.0",
+            "fileVersion": "1.2.6.0"
+          }
+        }
+      },
+      "MonoGame.Content.Builder.Task/3.8.1.303": {},
+      "MonoGame.Framework.DesktopGL/3.8.1.303": {
+        "runtime": {
+          "lib/net6.0/MonoGame.Framework.dll": {
+            "assemblyVersion": "3.8.1.303",
+            "fileVersion": "3.8.1.303"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSDL2-2.0.so.0": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libopenal.so.1": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libSDL2.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libopenal.1.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/SDL2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2.0.20.0"
+          },
+          "runtimes/win-x64/native/soft_oal.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/SDL2.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "2.0.20.0"
+          },
+          "runtimes/win-x86/native/soft_oal.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Myra/1.4.2": {
+        "dependencies": {
+          "FontStashSharp.MonoGame": "1.1.6",
+          "info.lundin.math.dll": "1.2.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Myra.dll": {
+            "assemblyVersion": "1.4.2.0",
+            "fileVersion": "1.4.2.0"
+          }
+        }
+      },
+      "StbImageSharp/2.27.11": {
+        "runtime": {
+          "lib/netstandard2.0/StbImageSharp.dll": {
+            "assemblyVersion": "2.27.11.0",
+            "fileVersion": "2.27.11.0"
+          }
+        }
+      },
+      "StbTrueTypeSharp/1.26.10": {
+        "runtime": {
+          "lib/netstandard2.0/StbTrueTypeSharp.dll": {
+            "assemblyVersion": "1.26.10.0",
+            "fileVersion": "1.26.10.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SpaceEngineersShipBuilder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cyotek.Drawing.BitmapFont/2.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iA6WehGVdMUuNbfsQQDq/Bt+mMd/OqHjiMUtKFLIQd/0pyYh4ehT7FEjTxN9/4OXNKQZsp9bAJgltP2nnswUJg==",
+      "path": "cyotek.drawing.bitmapfont/2.0.4",
+      "hashPath": "cyotek.drawing.bitmapfont.2.0.4.nupkg.sha512"
+    },
+    "FontStashSharp.Base/1.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Fa/U1NRrg4zSjsXiiU0WuD/kyLm+Lgs7DclpNrJkWPoMFmp1gCY6p2i+69f5+lrs4OJV5R169lWynDZuN+vnYA==",
+      "path": "fontstashsharp.base/1.1.6",
+      "hashPath": "fontstashsharp.base.1.1.6.nupkg.sha512"
+    },
+    "FontStashSharp.MonoGame/1.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hSq2jns39ySWEYtqvCWzDd00uGULCHfsWgoaZZ8t1QXGEpNgbXQ5uVaGCf8f9MUEtPpQS5nmUjx91RnpaJb/rw==",
+      "path": "fontstashsharp.monogame/1.1.6",
+      "hashPath": "fontstashsharp.monogame.1.1.6.nupkg.sha512"
+    },
+    "FontStashSharp.Rasterizers.StbTrueTypeSharp/1.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-c+S3fsNKY+jYnEHkF9iOORkIPxaZpO+nk3mQfCz6ePO4HgFk30pEQgZLCkavzIhTRrfRJUZqvqKNHtrsfAbGNg==",
+      "path": "fontstashsharp.rasterizers.stbtruetypesharp/1.1.6",
+      "hashPath": "fontstashsharp.rasterizers.stbtruetypesharp.1.1.6.nupkg.sha512"
+    },
+    "info.lundin.math.dll/1.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rCSUXUISKOmFkpEPd9wZJP9bHsyozEwvid3zO4gByG1QQX9IMAUZ8R9OZmpKp20JWrBMGBMTgoXAuLCSoK6VAQ==",
+      "path": "info.lundin.math.dll/1.2.6",
+      "hashPath": "info.lundin.math.dll.1.2.6.nupkg.sha512"
+    },
+    "MonoGame.Content.Builder.Task/3.8.1.303": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9Ilzzje62LhWElbPNEl7vh7XsRSbze+lvCJdZtTZUGu48FRgvYN6THURwIB9PN98EI33/Wnf6iuShNUtD7hL4Q==",
+      "path": "monogame.content.builder.task/3.8.1.303",
+      "hashPath": "monogame.content.builder.task.3.8.1.303.nupkg.sha512"
+    },
+    "MonoGame.Framework.DesktopGL/3.8.1.303": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eGYhqn0n1olk8MNYeE9EuBmoNNECN1T18rPMaQpkzsEQ0H3nVyFPXC+uCo78v5pi5juQpJ3PSFnSkjzZJ1U58A==",
+      "path": "monogame.framework.desktopgl/3.8.1.303",
+      "hashPath": "monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    },
+    "Myra/1.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SCI1sKLwHzIMFhRqmtNhanGUOJQUICQT5H6cz7lqjq+yTHpZnnJxBWYS+ZP/W64YE9C3z35/7Guf4bYXbU0yAA==",
+      "path": "myra/1.4.2",
+      "hashPath": "myra.1.4.2.nupkg.sha512"
+    },
+    "StbImageSharp/2.27.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KGXsx0IG2sNqjgu8w0w118bQmRx8avNxu8SbXKNW7izjrYTXrd5urAscez3qoIfaLeR4NdpxwHkkW/oInTp5Zg==",
+      "path": "stbimagesharp/2.27.11",
+      "hashPath": "stbimagesharp.2.27.11.nupkg.sha512"
+    },
+    "StbTrueTypeSharp/1.26.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WIsJ1q0xYt2MQF8CR5EmnjqVsnezqZyTKWrVp5x9WZpPWQMVyx+moxa/HCDg44PHxfU52BSPSCVANkK8+GXSEw==",
+      "path": "stbtruetypesharp/1.26.10",
+      "hashPath": "stbtruetypesharp.1.26.10.nupkg.sha512"
+    }
+  }
+}

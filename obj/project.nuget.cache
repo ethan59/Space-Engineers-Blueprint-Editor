@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bq0ZM1b0fXflALkI5czktfLuB6fOcKnJQkvRCT61XGVAk4IKTYYPnGfLcgxkhYZli6a1pEZITevj6NdLpBzblQ==",
+  "dgSpecHash": "QzUv9kwOluKc+BLA8G+SWmoX9T5mQdD39JuKsl9XatguxrJXOcGldraH6NM2h0PLEwwxNhw2P8CyOydH+ZodvA==",
   "success": true,
-  "projectFilePath": "E:\\VisualStudioApps\\SpaceEngineersShipBuilder\\SpaceEngineersShipBuilder.csproj",
+  "projectFilePath": "D:\\VisualStudioProjects\\Space-Engineers-Blueprint-Editor\\SpaceEngineersShipBuilder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ethan\\.nuget\\packages\\cyotek.drawing.bitmapfont\\2.0.4\\cyotek.drawing.bitmapfont.2.0.4.nupkg.sha512",
     "C:\\Users\\ethan\\.nuget\\packages\\fontstashsharp.base\\1.1.6\\fontstashsharp.base.1.1.6.nupkg.sha512",
