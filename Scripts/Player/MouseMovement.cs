@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace SpaceEngineersShipBuilder
+namespace SpaceEngineersShipBuilder.Scripts.Player
 {
     public class MouseMovement
     {
@@ -26,8 +26,10 @@ namespace SpaceEngineersShipBuilder
             float deltaX = (mouseState.X - _graphicsDevice.Viewport.Width / 2) * _sensitivity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             float deltaY = (mouseState.Y - _graphicsDevice.Viewport.Height / 2) * _sensitivity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            _rotation.X -= deltaX;
-            _rotation.Y = MathHelper.Clamp(_rotation.Y - deltaY, -MathHelper.PiOver2, MathHelper.PiOver2);
+            
+            // Swap X and Y assignments
+            _rotation.Y -= deltaX;
+            _rotation.X = MathHelper.Clamp(_rotation.X - deltaY, -MathHelper.PiOver2, MathHelper.PiOver2);
 
             Mouse.SetPosition(_graphicsDevice.Viewport.Width / 2, _graphicsDevice.Viewport.Height / 2);
         }
