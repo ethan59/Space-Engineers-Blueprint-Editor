@@ -10,6 +10,7 @@ using Myra.Assets;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 using SpaceEngineersShipBuilder.Scripts.Player;
+using System.Runtime.CompilerServices;
 /*using AssetManagementBase;
 using AssetManagementBase.Utility;
 */
@@ -18,6 +19,9 @@ namespace SpaceEngineersShipBuilder
     public class Game1 : Game
     {
         public GraphicsDeviceManager _graphics;
+
+        private SpriteBatch spriteBatch;
+        private grid _grid;
 
         public Desktop _desktop;
 
@@ -39,15 +43,11 @@ namespace SpaceEngineersShipBuilder
 
         public Models models;
 
-        //Camera
-        Vector3 camPosition;
 
         public bool mouseInput = true;
 
-        public Vector3 camLocalTrasform = Vector3.Forward;
-
         //items tranform
-        private Matrix localTransform = Matrix.CreateTranslation(new Vector3(0, 0, -10));
+        public Matrix localTransform = Matrix.CreateTranslation(new Vector3(0, 0, -10));
 
 
         private Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0));
@@ -57,12 +57,12 @@ namespace SpaceEngineersShipBuilder
 
         public Game1()
         {
+
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
             transform = new Vector3(0, 0, 0);
             transform2D = new Vector2(0, 0);
-            _playerMovement = new PlayerMovement(this,camLocalTrasform, 0.1f);
             // Initialize the GraphicsDevice first
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
@@ -72,6 +72,8 @@ namespace SpaceEngineersShipBuilder
 
             // Create an instance of MouseMovement after initializing _graphics
             _mouseMovement = new MouseMovement(0.5f, GraphicsDevice);
+            _playerMovement = new PlayerMovement(world);
+            _grid = new grid(GraphicsDevice, 30, 1.0f, -2.0f); // Adjust gridSize and cellSize as needed
         }
 
         protected override void Initialize()
@@ -86,7 +88,7 @@ namespace SpaceEngineersShipBuilder
             // Inside your Initialize method in Game1
             float aspectRatio = (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height;
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), aspectRatio, 0.1f, 100f);
-
+            
 
 
             base.Initialize();
@@ -98,12 +100,13 @@ namespace SpaceEngineersShipBuilder
             //AssetHotloader hotloader = new AssetHotloader(Content, Content.RootDirectory);
             model = Content.Load<Model>("cube");
             otherTexture = Content.Load<Texture2D>("pixilart-drawing");
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             base.LoadContent();
 
         }        
 
-        public Vector2 camRotation = Vector2.Zero;
+        public Vector3 camRotation = Vector3.Zero;
 
 
         protected override void Update(GameTime gameTime)
@@ -137,7 +140,6 @@ namespace SpaceEngineersShipBuilder
             // Calculate camera position and view matrix based on player input
             Vector3 cameraTarget = _playerMovement.Position + Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
             Vector3 upVector = Vector3.Transform(Vector3.Up, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
-            //view = Matrix.CreateLookAt(_playerMovement.Position, cameraTarget, upVector);
 
 
             // Update the view matrix with the new camera position and rotation
@@ -182,6 +184,9 @@ namespace SpaceEngineersShipBuilder
                     effect.FogColor = Color.White.ToVector3();
                     effect.FogStart = 20f;
                     effect.FogEnd = 25f;
+
+
+                    _grid.Draw(view, projection);
 
                     //effect.Texture = otherTexture;
                 }

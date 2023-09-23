@@ -1,57 +1,52 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+using Myra.Graphics2D.UI;
 using System.Diagnostics;
 
 namespace SpaceEngineersShipBuilder.Scripts.Player
 {
     public class PlayerMovement
     {
-        //local pos
         private Vector3 _position;
-        
-        private float _speed = 100;
-        
-        private Game1 _game1;
-        
-        private bool showUI = false;
-        
+        private float _speed = 5;
+        private Matrix _camLocalPos;
+
+        private int previousScrollValue;
+        MouseState originalMouseState;
+
         public Vector3 Position => _position;
 
-
-        private Vector3 moveVector = new Vector3();
-
-        public PlayerMovement(Game1 game1,Vector3 camLocalPosition, float speed)
+        public PlayerMovement(Matrix camPos)
         {
-            _game1 = game1;
-            _position = camLocalPosition;
-            _speed = speed;
+            _camLocalPos = camPos;
+            previousScrollValue = originalMouseState.ScrollWheelValue;
         }
 
         public void Update(GameTime gameTime)
         {
-
-            Vector3 forward = Vector3.Transform(Vector3.Forward, Matrix.CreateTranslation(_game1.camLocalTrasform.X,0,0) * Matrix.CreateTranslation(0,0, _game1.camLocalTrasform.Z));
-            //Vector3 right = Vector3.Normalize(Vector3.Cross(forward, Vector3.Up));
+            Vector3 forward = _camLocalPos.Forward;
+            Vector3 right = _camLocalPos.Right;
 
             KeyboardState keyboardState = Keyboard.GetState();
-            // Calculate the forward direction based on the camera's rotation
+            Vector3 moveVector = Vector3.Zero;
 
 
             if (keyboardState.IsKeyDown(Keys.W))
             {
-                moveVector += forward * _speed;
+                moveVector += forward;
             }
             if (keyboardState.IsKeyDown(Keys.S))
             {
-                moveVector += Vector3.Backward * _speed;
+                moveVector -= forward;
             }
             if (keyboardState.IsKeyDown(Keys.A))
             {
-                moveVector += Vector3.Left * _speed;
+                moveVector -= right;
             }
             if (keyboardState.IsKeyDown(Keys.D))
             {
-                moveVector += Vector3.Right * _speed;
+                moveVector += right;
             }
 
             // Normalize the move vector to prevent faster diagonal movement
@@ -59,22 +54,19 @@ namespace SpaceEngineersShipBuilder.Scripts.Player
             {
                 moveVector.Normalize();
             }
-            showUI = true;
-            if(keyboardState.IsKeyDown(Keys.OemTilde) && showUI)
-            {
-                Debug.WriteLine("-------------Im working-------------");
-                showUI = !showUI;
-            }
-            else
-            {
-                Debug.WriteLine("False");
-                showUI = !showUI;
-            }
 
-
+            //Does Not work need to be fixed
+            if (originalMouseState.ScrollWheelValue < previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
+            {
+                _speed += 1;
+            }
+            else if (originalMouseState.ScrollWheelValue > previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
+            {
+                _speed -= 1;
+            }
+            previousScrollValue = originalMouseState.ScrollWheelValue;
             // Update the player's position
             _position += moveVector * _speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 }
-
