@@ -72,7 +72,7 @@ namespace SpaceEngineersShipBuilder
 
             // Create an instance of MouseMovement after initializing _graphics
             _mouseMovement = new MouseMovement(0.5f, GraphicsDevice);
-            _playerMovement = new PlayerMovement(world);
+            _playerMovement = new PlayerMovement(world, view);
             _grid = new grid(GraphicsDevice, 30, 1.0f, -2.0f); // Adjust gridSize and cellSize as needed
         }
 
@@ -88,7 +88,6 @@ namespace SpaceEngineersShipBuilder
             // Inside your Initialize method in Game1
             float aspectRatio = (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height;
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), aspectRatio, 0.1f, 100f);
-            
 
 
             base.Initialize();

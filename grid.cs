@@ -10,6 +10,14 @@ namespace SpaceEngineersShipBuilder
         private BasicEffect effect;
         private GraphicsDevice graphicsDevice;
         private Color color;
+        private Matrix worldPosition;
+
+
+        public Vector3 Position 
+        {
+            get { return worldPosition.Translation; }
+            set { worldPosition.Translation = value; }
+        }
 
         public grid(GraphicsDevice graphicsDevice, int gridSize, float cellSize, float yPos)
         {
@@ -22,9 +30,12 @@ namespace SpaceEngineersShipBuilder
             effect = new BasicEffect(graphicsDevice);
             color = new Color(Color.DarkGray,0);
 
-
             // Create the grid vertices and indices
             CreateGrid(gridSize, cellSize, yPos);
+
+            // Initialize the world matrix with an identity matrix
+            worldPosition = Matrix.Identity;
+
         }
 
 
@@ -52,7 +63,6 @@ namespace SpaceEngineersShipBuilder
             effect.View = view;
             effect.Projection = projection;
             effect.VertexColorEnabled = true;
-
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
                 pass.Apply();
