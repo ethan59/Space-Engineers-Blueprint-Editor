@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Myra;
 using Myra.Graphics2D.UI;
 using Myra.Graphics2D.UI.File;
@@ -8,15 +9,12 @@ namespace SpaceEngineersShipBuilder
 {
     public class UIManager
     {
-        private Desktop _desktop;
-
+        public Desktop _desktop;
         public UIManager(Game game) 
         {
             MyraEnvironment.Game = game;
             CreateUI();
         }
-
-
         public void CreateUI() 
         {
 
@@ -44,7 +42,7 @@ namespace SpaceEngineersShipBuilder
                 /*var messageBox = Dialog.CreateMessageBox("Attention!", "Are you shure you want to quit!");
                 messageBox.ShowModal(_desktop);
                 messageBox.ButtonOk.Text = "Yes";
-                messageBox.ButtonOk.Click += (s,a) => { Exit();};*/
+                messageBox.ButtonOk.Click += (s, a) => { Exit(); };*/
                 ShowContextMenu();
             };
 
@@ -57,6 +55,7 @@ namespace SpaceEngineersShipBuilder
                 _desktop.Root = grid;
             };
         }
+
         public void ShowContextMenu()
         {
             if (_desktop.ContextMenu != null)

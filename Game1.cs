@@ -1,16 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Myra;
-using Myra.Graphics2D.UI;
-using Myra.Graphics2D.UI.File;
 using System.IO;
-using System;
-using Myra.Assets;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 using SpaceEngineersShipBuilder.Scripts.Player;
-using System.Runtime.CompilerServices;
 /*using AssetManagementBase;
 using AssetManagementBase.Utility;
 */
@@ -19,32 +12,17 @@ namespace SpaceEngineersShipBuilder
     public class Game1 : Game
     {
         public GraphicsDeviceManager _graphics;
-
         private SpriteBatch spriteBatch;
         private grid _grid;
-
-        public Desktop _desktop;
-
-        public float camSpeed = 0.1f;
-        public float mouseX;
-        public float mouseY;
-        public float sensitivity = 0.5f;
-
-
         private PlayerMovement _playerMovement;
         private MouseMovement _mouseMovement;
         private UIManager _uiManager;
 
 
-        public Vector3 transform;
-        public Vector2 transform2D;
+        public Vector3 cameraTarget;
+        public Vector3 upVector;
 
         public Model model;
-
-        public Models models;
-
-
-        public bool mouseInput = true;
 
         //items tranform
         public Matrix localTransform = Matrix.CreateTranslation(new Vector3(0, 0, -10));
@@ -61,19 +39,20 @@ namespace SpaceEngineersShipBuilder
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = false;
-            transform = new Vector3(0, 0, 0);
-            transform2D = new Vector2(0, 0);
+
+
             // Initialize the GraphicsDevice first
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-            _uiManager = new UIManager(this);
 
 
             // Create an instance of MouseMovement after initializing _graphics
             _mouseMovement = new MouseMovement(0.5f, GraphicsDevice);
-            _playerMovement = new PlayerMovement(world, view);
+            _playerMovement = new PlayerMovement(view, upVector);
             _grid = new grid(GraphicsDevice, 30, 1.0f, -2.0f); // Adjust gridSize and cellSize as needed
+            _uiManager = new UIManager(this);
+
         }
 
         protected override void Initialize()
@@ -111,34 +90,16 @@ namespace SpaceEngineersShipBuilder
         protected override void Update(GameTime gameTime)
         {
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                _uiManager.ShowContextMenu();
-            }
-
-
             // Inside your Update method in Game1
-            _playerMovement.Update(gameTime);
             _mouseMovement.Update(gameTime);
+            _playerMovement.Update(gameTime);
 
             // Calculate the elapsed time since the last frame
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-
-            //float deltaX = (Mouse.GetState().X - GraphicsDevice.Viewport.Width / 2) * sensitivity * elapsed;
-            //float deltaY = (Mouse.GetState().Y - GraphicsDevice.Viewport.Height / 2) * sensitivity * elapsed;
-
-            // Adjust the camera's rotation based on mouse input
-            //camRotation.Y -= deltaX;
-            //camRotation.X = MathHelper.Clamp(camRotation.X - deltaY, -MathHelper.PiOver2, MathHelper.PiOver2);
-
-            // Reset the mouse position to the center of the screen
-            //Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
-            //mouseInput = true;
             // Calculate camera position and view matrix based on player input
-            Vector3 cameraTarget = _playerMovement.Position + Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
-            Vector3 upVector = Vector3.Transform(Vector3.Up, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
+            cameraTarget = _playerMovement.Position + Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
+            upVector = Vector3.Transform(Vector3.Up, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
 
 
             // Update the view matrix with the new camera position and rotation
@@ -156,7 +117,7 @@ namespace SpaceEngineersShipBuilder
 
             DrawModel(model, localTransform, view, projection);
 
-            //_desktop.Render();
+            _uiManager._desktop.Render();
 
             base.Draw(gameTime);
         }
@@ -183,7 +144,6 @@ namespace SpaceEngineersShipBuilder
                     effect.FogColor = Color.White.ToVector3();
                     effect.FogStart = 20f;
                     effect.FogEnd = 25f;
-
 
                     _grid.Draw(view, projection);
 

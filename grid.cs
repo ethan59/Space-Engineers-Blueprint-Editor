@@ -28,7 +28,7 @@ namespace SpaceEngineersShipBuilder
             vertices = new VertexPositionColor[numVertices];
             indices = new int[numIndices];
             effect = new BasicEffect(graphicsDevice);
-            color = new Color(Color.DarkGray,0);
+            color = new Color(Color.DarkGray,0.1f);
 
             // Create the grid vertices and indices
             CreateGrid(gridSize, cellSize, yPos);
@@ -44,10 +44,10 @@ namespace SpaceEngineersShipBuilder
             // Generate grid vertices with the specified Y height
             for (int i = 0; i < gridSize + 1; i++)
             {
-                vertices[i * 4] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, 0), color);
-                vertices[i * 4 + 1] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, gridSize * cellSize), color);
-                vertices[i * 4 + 2] = new VertexPositionColor(new Vector3(0, yHeight, i * cellSize), color);
-                vertices[i * 4 + 3] = new VertexPositionColor(new Vector3(gridSize * cellSize, yHeight, i * cellSize), color);
+                vertices[i * 4] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, 0), color = new Color(Color.Green, 1));
+                vertices[i * 4 + 1] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, gridSize * cellSize), color = new Color(Color.Blue, 1));
+                vertices[i * 4 + 2] = new VertexPositionColor(new Vector3(0, yHeight, i * cellSize), color = new Color(Color.Red, 1));
+                vertices[i * 4 + 3] = new VertexPositionColor(new Vector3(gridSize * cellSize, yHeight, i * cellSize), color = new Color(Color.Purple, 1));
 
                 indices[i * 2] = i * 4;
                 indices[i * 2 + 1] = i * 4 + 1;
