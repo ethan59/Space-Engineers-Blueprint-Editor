@@ -41,13 +41,15 @@ namespace SpaceEngineersShipBuilder
 
         private void CreateGrid(int gridSize, float cellSize, float yHeight)
         {
+            Color c = Color.Green;
+
             // Generate grid vertices with the specified Y height
             for (int i = 0; i < gridSize + 1; i++)
             {
-                vertices[i * 4] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, 0), color = new Color(Color.Green, 1));
-                vertices[i * 4 + 1] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, gridSize * cellSize), color = new Color(Color.Blue, 1));
-                vertices[i * 4 + 2] = new VertexPositionColor(new Vector3(0, yHeight, i * cellSize), color = new Color(Color.Red, 1));
-                vertices[i * 4 + 3] = new VertexPositionColor(new Vector3(gridSize * cellSize, yHeight, i * cellSize), color = new Color(Color.Purple, 1));
+                vertices[i * 4] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, 0), color = new Color(c, 1));
+                vertices[i * 4 + 1] = new VertexPositionColor(new Vector3(i * cellSize, yHeight, gridSize * cellSize), color = new Color(c, 1));
+                vertices[i * 4 + 2] = new VertexPositionColor(new Vector3(0, yHeight, i * cellSize), color = new Color(c, 1));
+                vertices[i * 4 + 3] = new VertexPositionColor(new Vector3(gridSize * cellSize, yHeight, i * cellSize), color = new Color(c, 1));
 
                 indices[i * 2] = i * 4;
                 indices[i * 2 + 1] = i * 4 + 1;

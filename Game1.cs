@@ -30,7 +30,7 @@ namespace SpaceEngineersShipBuilder
 
         private Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0));
         private Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, 10), new Vector3(0, 0, 0), Vector3.UnitY);
-        private Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 1920f / 1080f, 0.1f, 100f);
+        private Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 1920f / 1080f, 0.1f, 10f);
 
 
         public Game1()
@@ -65,7 +65,7 @@ namespace SpaceEngineersShipBuilder
 
             // Inside your Initialize method in Game1
             float aspectRatio = (float)GraphicsDevice.Viewport.Width / (float)GraphicsDevice.Viewport.Height;
-            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), aspectRatio, 0.1f, 100f);
+            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), aspectRatio, 0.1f, 1000f);
 
 
             base.Initialize();
@@ -150,7 +150,7 @@ namespace SpaceEngineersShipBuilder
                     effect.EmissiveColor = new Vector3(0, 0, 0);
                     effect.Texture = otherTexture;
                     effect.TextureEnabled = true;
-                    effect.FogEnabled = true;
+                    effect.FogEnabled = false;
                     effect.FogColor = Color.White.ToVector3();
                     effect.FogStart = 20f;
                     effect.FogEnd = 25f;
