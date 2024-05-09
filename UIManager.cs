@@ -9,15 +9,17 @@ namespace SpaceEngineersShipBuilder
 {
     public class UIManager
     {
-        public Desktop _desktop;
-        public UIManager(Game game) 
+        private Desktop _mainDesktop;
+
+        public UIManager(Game game)
         {
             MyraEnvironment.Game = game;
+            _mainDesktop = new Desktop();
             CreateUI();
         }
-        public void CreateUI() 
-        {
 
+        private void CreateUI()
+        {
             var grid = new Grid
             {
                 RowSpacing = 8,
@@ -29,136 +31,86 @@ namespace SpaceEngineersShipBuilder
             grid.RowsProportions.Add(new Proportion(ProportionType.Auto));
             grid.RowsProportions.Add(new Proportion(ProportionType.Auto));
 
-
-            var MenuButton = new TextButton
+            var menuButton = new TextButton
             {
                 GridColumn = 0,
-                GridRow = 0,    
-                Text = "    Menu    "
+                GridRow = 0,
+                Text = "Menu"
             };
 
-            MenuButton.Click += (s, a) =>
-            {
-                /*var messageBox = Dialog.CreateMessageBox("Attention!", "Are you shure you want to quit!");
-                messageBox.ShowModal(_desktop);
-                messageBox.ButtonOk.Text = "Yes";
-                messageBox.ButtonOk.Click += (s, a) => { Exit(); };*/
-                ShowContextMenu();
-            };
+            menuButton.Click += (s, a) => { ShowContextMenu(); };
 
-
-            grid.Widgets.Add(MenuButton);
-
-            // Add it to the desktop
-            _desktop = new Desktop();
-            {
-                _desktop.Root = grid;
-            };
+            grid.Widgets.Add(menuButton);
+            _mainDesktop.Root = grid;
         }
 
         public void ShowContextMenu()
         {
-            if (_desktop.ContextMenu != null)
+            if (_mainDesktop.ContextMenu != null)
             {
-                // Dont show if it's already shown
                 return;
             }
 
-            var container = new VerticalStackPanel
+            var verticalMenu = new VerticalMenu();
+
+            var saveItem = new MenuItem
             {
-                GridColumn = 0,
-                GridRow = 0,
-                Spacing = 10
+                Text = "Save"
             };
 
-            var titleContainer = new Panel
-            {
-                Background = DefaultAssets.UITextureRegionAtlas["button"],
-            };
+            saveItem.Selected += (s, a) => { Console.WriteLine("Save Selected"); };
 
-            var titleLabel = new Label
-            {
-                //Text = "Choose Option",
-                HorizontalAlignment = HorizontalAlignment.Center
-            };
-
-            //titleContainer.Widgets.Add(titleLabel);
-            container.Widgets.Add(titleContainer);
-
-
-            Project project = new();
-
-            var menuItem1 = new MenuItem();
-            {
-                menuItem1.Text = "Save";
-            };
-            menuItem1.Selected += (s, a) =>
-            {
-                // "Start New Game" selected
-
-            };
-
-            var menuItem2 = new MenuItem
+            var loadItem = new MenuItem
             {
                 Text = "Load"
             };
-            menuItem2.Selected += (s, a) =>
+
+            loadItem.Selected += (s, a) =>
             {
-                FileDialog dialog = new(FileDialogMode.OpenFile)
+                var dialog = new FileDialog(FileDialogMode.OpenFile)
                 {
-
-
                     Filter = "*.fbx",
                     Folder = "E:/SteamLibrary/steamapps/common/SpaceEngineersModSDK/OriginalContent/Models/Cubes/large"
-                    //Folder = ""
                 };
 
-                dialog.Closed += (s, a) =>
+                dialog.Closed += (dialogSender, dialogArgs) =>
                 {
-                    if (!dialog.Result)
-                    {
-                        // "Cancel" or Enter
-                        return;
-                    }
-
-                    // "OK" or Enter
-
+                    if (!dialog.Result) return;
+                    Console.WriteLine($"Loaded: {dialog.FilePath}");
                 };
-                dialog.ShowModal(_desktop);
+
+                dialog.ShowModal(_mainDesktop);
             };
 
-            var menuItem3 = new MenuItem();
+            var quitItem = new MenuItem
             {
-                menuItem3.Text = "Quit";
+                Text = "Quit"
             };
-            menuItem3.Selected += (s, a) =>
+
+            quitItem.Selected += (s, a) =>
             {
-                Dialog dialog = new()
+                var dialog = Dialog.CreateMessageBox("Confirm Exit", "Are you sure you want to quit?");
+                dialog.ButtonOk.Text = "Quit";
+                dialog.ButtonCancel.Text = "Cancel";
+                dialog.ButtonOk.Click += (dialogSender, dialogArgs) =>
                 {
-                    Title = "ARE YOU SURE YOU WANT TO QUIT!"
+                    MyraEnvironment.Game.Exit();
                 };
 
-                dialog.ButtonOk.Text = "    Quit    ";
-                dialog.ButtonCancel.Text = "    Cancel  ";
-                dialog.ButtonOk.HorizontalAlignment = HorizontalAlignment.Center;
-                dialog.ButtonCancel.HorizontalAlignment = HorizontalAlignment.Center;
-
-                //dialog.ButtonOk.Click += (s, a) => { Exit(); };
-
-
-                dialog.ShowModal(_desktop);
+                dialog.ShowModal(_mainDesktop);
             };
 
+            verticalMenu.Items.Add(saveItem);
+            verticalMenu.Items.Add(loadItem);
+            verticalMenu.Items.Add(quitItem);
 
-            var verticalMenu = new VerticalMenu();
+            _mainDesktop.ShowContextMenu(verticalMenu, _mainDesktop.TouchPosition);
+        }
 
-            verticalMenu.Items.Add(menuItem1);
-            verticalMenu.Items.Add(menuItem2);
-            verticalMenu.Items.Add(menuItem3);
-
-            container.Widgets.Add(verticalMenu);
-
-            _desktop.ShowContextMenu(container, _desktop.TouchPosition);
+        public void Render()
+        {
+            _mainDesktop.Render();
         }
     }
+
 }

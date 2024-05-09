@@ -4,6 +4,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 using SpaceEngineersShipBuilder.Scripts.Player;
+using Microsoft.Xna.Framework.Input;
 /*using AssetManagementBase;
 using AssetManagementBase.Utility;
 */
@@ -102,6 +103,7 @@ namespace SpaceEngineersShipBuilder
 
         protected override void Update(GameTime gameTime)
         {
+
             // Update mouse movement to get the latest rotation angles
             _mouseMovement.Update(gameTime);
 
@@ -141,7 +143,7 @@ namespace SpaceEngineersShipBuilder
 
             DrawModel(model, localTransform, view, projection);
 
-            _uiManager._desktop.Render();
+            _uiManager.Render();
 
             base.Draw(gameTime);
         }

@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\scripts\\player\\mousemovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -40,33 +40,33 @@
               "RelativeDocumentMoniker": "Game1.cs",
               "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Game1.cs",
               "RelativeToolTip": "Game1.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAADwvzEAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T14:44:00.395Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\UIManager.cs",
               "RelativeDocumentMoniker": "UIManager.cs",
               "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\UIManager.cs",
               "RelativeToolTip": "UIManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T14:44:01.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Scripts\\Player\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeToolTip": "Scripts\\Player\\PlayerMovement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACcAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T14:44:01.027Z",
               "EditorCaption": ""
@@ -81,8 +81,7 @@
               "RelativeToolTip": "Scripts\\Player\\MouseMovement.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.028Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-09T14:44:01.028Z"
             },
             {
               "$type": "Document",
@@ -94,8 +93,7 @@
               "RelativeToolTip": "grid.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAAAwDsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.029Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-09T14:44:01.029Z"
             }
           ]
         }

@@ -37,6 +37,8 @@ public class PlayerMovement
         if (keyboardState.IsKeyDown(Keys.Space)) moveVector += _upVector;
         if (keyboardState.IsKeyDown(Keys.LeftControl)) moveVector -= _upVector;
 
+        //if (keyboardState.IsKeyDown(Keys.Escape));
+
         // Normalize movement vector to prevent faster diagonal movement
         if (moveVector != Vector3.Zero) moveVector.Normalize();
 
