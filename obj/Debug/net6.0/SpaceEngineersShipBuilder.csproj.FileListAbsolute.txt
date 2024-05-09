@@ -33,8 +33,6 @@ E:\VisualStudioApps\SpaceEngineersShipBuilder\obj\Debug\net6.0\SpaceEngineersShi
 E:\VisualStudioApps\SpaceEngineersShipBuilder\obj\Debug\net6.0\ref\SpaceEngineersShipBuilder.dll
 E:\VisualStudioApps\SpaceEngineersShipBuilder\bin\Debug\net6.0\Content\cube.xnb
 E:\VisualStudioApps\SpaceEngineersShipBuilder\bin\Debug\net6.0\Content\pixilart-drawing.xnb
-D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\bin\Debug\net6.0\Content\cube.xnb
-D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\bin\Debug\net6.0\Content\pixilart-drawing.xnb
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\bin\Debug\net6.0\SpaceEngineersShipBuilder.exe
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\bin\Debug\net6.0\SpaceEngineersShipBuilder.deps.json
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\bin\Debug\net6.0\SpaceEngineersShipBuilder.runtimeconfig.json
@@ -68,3 +66,4 @@ D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\obj\Debug\net6.0\refint
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\obj\Debug\net6.0\SpaceEngineersShipBuilder.pdb
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\obj\Debug\net6.0\SpaceEngineersShipBuilder.genruntimeconfig.cache
 D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\obj\Debug\net6.0\ref\SpaceEngineersShipBuilder.dll
+D:\VisualStudioProjects\Space-Engineers-Blueprint-Editor\obj\Debug\net6.0\SpaceEngineersShipBuilder.sourcelink.json
