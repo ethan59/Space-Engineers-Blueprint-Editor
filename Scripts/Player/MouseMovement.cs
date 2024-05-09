@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace SpaceEngineersShipBuilder.Scripts.Player
 {
@@ -9,6 +10,10 @@ namespace SpaceEngineersShipBuilder.Scripts.Player
         private Vector2 _rotation; // Stores the yaw (Y) and pitch (X) rotations
         private float _sensitivity;
         private GraphicsDevice _graphicsDevice;
+
+        // Constants for fine-tuning
+        private const float maxRotationSpeed = 0.1f;  // Limit on how fast rotation changes
+        private const float deadZoneThreshold = 0.002f; // Threshold to ignore slight movements
 
         // Public property to access the current rotation (yaw and pitch)
         public Vector2 Rotation => _rotation;
@@ -25,9 +30,16 @@ namespace SpaceEngineersShipBuilder.Scripts.Player
         {
             MouseState mouseState = Mouse.GetState();
 
-            // Calculate mouse movement differences
+            // Calculate mouse movement differences with dead zone filtering
             float deltaX = (mouseState.X - _graphicsDevice.Viewport.Width / 2) * _sensitivity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             float deltaY = (mouseState.Y - _graphicsDevice.Viewport.Height / 2) * _sensitivity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (Math.Abs(deltaX) < deadZoneThreshold) deltaX = 0f;
+            if (Math.Abs(deltaY) < deadZoneThreshold) deltaY = 0f;
+
+            // Cap the rotation speed to avoid excessive movement
+            deltaX = MathHelper.Clamp(deltaX, -maxRotationSpeed, maxRotationSpeed);
+            deltaY = MathHelper.Clamp(deltaY, -maxRotationSpeed, maxRotationSpeed);
 
             // Update yaw (horizontal) and pitch (vertical) based on mouse movement
             _rotation.Y -= deltaX; // Yaw (horizontal rotation)

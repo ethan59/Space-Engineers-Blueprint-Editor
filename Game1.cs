@@ -44,12 +44,26 @@ namespace SpaceEngineersShipBuilder
             _graphics.ApplyChanges();
 
             // Create an instance of MouseMovement after initializing _graphics
-            _mouseMovement = new MouseMovement(0.5f, GraphicsDevice);
+            _mouseMovement = new MouseMovement(0.1f, GraphicsDevice);
 
             // Initialize the player movement with a starting position and up vector
-            _playerMovement = new PlayerMovement(new Vector3(0, 0, 0), Vector3.Up);
 
-            _grid = new grid(GraphicsDevice, 30, 1.0f, -2.0f); // Adjust gridSize and cellSize as needed
+            // Assume these values are already defined or modify as necessary
+            int gridSize = 30;
+            float cellSize = 1.0f;
+            float gridHeight = -2.0f;
+
+            // Calculate the center of the grid
+            Vector3 gridCenter = new Vector3(
+                (gridSize * cellSize) / 2.0f,
+                gridHeight,
+                (gridSize * cellSize) / 2.0f
+            );
+            // Create the grid and player instances
+            _grid = new grid(GraphicsDevice, gridSize, cellSize, gridHeight);
+
+            // Initialize the player to start at the grid center
+            _playerMovement = new PlayerMovement(new Vector3(gridCenter.X, 0, gridCenter.Z), Vector3.Up);
             _uiManager = new UIManager(this);
         }
 
@@ -154,6 +168,7 @@ namespace SpaceEngineersShipBuilder
                     effect.FogColor = Color.White.ToVector3();
                     effect.FogStart = 20f;
                     effect.FogEnd = 25f;
+                    effect.World = world;
 
                     _grid.Draw(view, projection);
 

@@ -51,14 +51,13 @@ namespace SpaceEngineersShipBuilder
                 vertices[i * 4 + 2] = new VertexPositionColor(new Vector3(0, yHeight, i * cellSize), color = new Color(c, 1));
                 vertices[i * 4 + 3] = new VertexPositionColor(new Vector3(gridSize * cellSize, yHeight, i * cellSize), color = new Color(c, 1));
 
-                indices[i * 2] = i * 4;
-                indices[i * 2 + 1] = i * 4 + 1;
-                indices[(gridSize + 1) * 2 + i * 2] = i * 4 + 2;
-                indices[(gridSize + 1) * 2 + i * 2 + 1] = i * 4 + 3;
+                indices[i * 2] = i * 4; // Horizontal lines start
+                indices[i * 2 + 1] = i * 4 + 1; // Horizontal lines end
+                indices[(gridSize + 1) * 2 + i * 2] = i * 4 + 2; // Vertical lines start
+                indices[(gridSize + 1) * 2 + i * 2 + 1] = i * 4 + 3; // Vertical lines end
+
             }
         }
-
-
 
         public void Draw(Matrix view, Matrix projection)
         {
