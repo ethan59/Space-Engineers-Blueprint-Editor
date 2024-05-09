@@ -25,7 +25,7 @@ namespace SpaceEngineersShipBuilder
         public Model model;
 
         //items tranform
-        public Matrix localTransform = Matrix.CreateTranslation(new Vector3(0, 0, -10));
+        public Matrix localTransform = Matrix.CreateTranslation(new Vector3(20, -1, 20));
 
 
         private Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0));
@@ -35,25 +35,24 @@ namespace SpaceEngineersShipBuilder
 
         public Game1()
         {
-
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = false;
-
 
             // Initialize the GraphicsDevice first
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
-
-
             // Create an instance of MouseMovement after initializing _graphics
             _mouseMovement = new MouseMovement(0.5f, GraphicsDevice);
-            _playerMovement = new PlayerMovement(view, upVector);
+
+            // Initialize the player movement with a starting position and up vector
+            _playerMovement = new PlayerMovement(new Vector3(0, 0, 0), Vector3.Up);
+
             _grid = new grid(GraphicsDevice, 30, 1.0f, -2.0f); // Adjust gridSize and cellSize as needed
             _uiManager = new UIManager(this);
-
         }
+
 
         protected override void Initialize()
         {
@@ -89,25 +88,36 @@ namespace SpaceEngineersShipBuilder
 
         protected override void Update(GameTime gameTime)
         {
-
-            // Inside your Update method in Game1
+            // Update mouse movement to get the latest rotation angles
             _mouseMovement.Update(gameTime);
+
+            // Get the current camera rotation matrix from MouseMovement
+            Matrix cameraRotation = _mouseMovement.GetCameraRotationMatrix();
+
+            // Update the player's camera rotation matrix in PlayerMovement
+            _playerMovement.UpdateCameraRotation(cameraRotation);
+
+            // Update player movement based on input
             _playerMovement.Update(gameTime);
 
-            // Calculate the elapsed time since the last frame
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            // Calculate the camera target using the camera's forward direction
+            Vector3 cameraForward = Vector3.Transform(Vector3.Forward, cameraRotation);
+            cameraTarget = _playerMovement.Position + cameraForward;
 
-            // Calculate camera position and view matrix based on player input
-            cameraTarget = _playerMovement.Position + Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
-            upVector = Vector3.Transform(Vector3.Up, Matrix.CreateRotationX(_mouseMovement.Rotation.X) * Matrix.CreateRotationY(_mouseMovement.Rotation.Y));
+            // The camera's up vector remains aligned with the world
+            upVector = Vector3.Transform(Vector3.Up, cameraRotation);
 
-
-            // Update the view matrix with the new camera position and rotation
+            // Create the view matrix based on the player's current position and the calculated camera target
             view = Matrix.CreateLookAt(_playerMovement.Position, cameraTarget, upVector);
-            Debug.WriteLine("player pos: " + _playerMovement.Position);
-            Debug.WriteLine("player rot: " + view);
+
+            // Debug logs to track the player's position and camera view matrix
+            Debug.WriteLine("Player position: " + _playerMovement.Position);
+            Debug.WriteLine("Camera view matrix: " + view);
+
+            // Call the base Update method to ensure other game logic updates
             base.Update(gameTime);
         }
+
 
 
         protected override void Draw(GameTime gameTime)

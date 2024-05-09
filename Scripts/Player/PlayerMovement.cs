@@ -1,91 +1,68 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
 
 public class PlayerMovement
 {
-    private bool isMouseMovementEnabled = false;
-
-
     private Vector3 _position;
-    private float _speed = 5;
-    private Matrix _camRotation; // Store the camera's rotation matrix
-    //private Vector3 _camRotation;
+    private float _speed = 5f;
+    private Matrix _cameraRotation; // Stores the latest camera rotation matrix
+    private Vector3 _upVector;
     private int previousScrollValue;
-    MouseState originalMouseState;
-    private Vector3 _camUpVector;
+    private MouseState originalMouseState;
+
+    // Public property to access the player's position
     public Vector3 Position => _position;
 
-    public PlayerMovement(Matrix camRotation, Vector3 upVec)
+    // Constructor to initialize player movement
+    public PlayerMovement(Vector3 initialPosition, Vector3 upVec)
     {
-        _camUpVector = upVec;
-        _camRotation = camRotation; // Store the camera's rotation matrix
+        _position = initialPosition;
+        _upVector = upVec;
+        originalMouseState = Mouse.GetState();
         previousScrollValue = originalMouseState.ScrollWheelValue;
     }
 
+    // Update method to handle movement logic
     public void Update(GameTime gameTime)
     {
-        // Use the camera's rotation matrix to transform the forward and right vectors
-        Vector3 forward = _camRotation.Forward;
-        Vector3 right = _camRotation.Right;
+        // Extract the forward and right vectors from the camera rotation matrix
+        Vector3 forward = Vector3.Transform(Vector3.Forward, _cameraRotation);
+        Vector3 right = Vector3.Transform(Vector3.Right, _cameraRotation);
 
         KeyboardState keyboardState = Keyboard.GetState();
         Vector3 moveVector = Vector3.Zero;
 
-        if (keyboardState.IsKeyDown(Keys.W))
-        {
-            moveVector += forward;
-            //moveVector = Vector3.Cross(forward, right);
-        }
-        if (keyboardState.IsKeyDown(Keys.S))
-        {
-            moveVector -= forward;
-        }
-        if (keyboardState.IsKeyDown(Keys.A))
-        {
-            moveVector -= right;
-        }
-        if (keyboardState.IsKeyDown(Keys.D))
-        {
-            moveVector += right;
-        }
-        if(keyboardState.IsKeyDown(Keys.Space))
-        {
-            moveVector -= Vector3.Cross(forward, right);
-        }
-        if (keyboardState.IsKeyDown(Keys.LeftControl))
-        {
-            moveVector += Vector3.Cross(forward, right);
-        }
-        // Normalize the move vector to prevent faster diagonal movement
-        if (moveVector != Vector3.Zero)
-        {
-            moveVector.Normalize();
-        }
+        // Adjust the movement vector based on keyboard input
+        if (keyboardState.IsKeyDown(Keys.W)) moveVector += forward; // Move forward
+        if (keyboardState.IsKeyDown(Keys.S)) moveVector -= forward; // Move backward
+        if (keyboardState.IsKeyDown(Keys.A)) moveVector -= right;   // Move left
+        if (keyboardState.IsKeyDown(Keys.D)) moveVector += right;   // Move right
+        if (keyboardState.IsKeyDown(Keys.Space)) moveVector += _upVector; // Move up
+        if (keyboardState.IsKeyDown(Keys.LeftControl)) moveVector -= _upVector; // Move down
 
-        if(keyboardState.IsKeyDown(Keys.Escape) && isMouseMovementEnabled)
-        {
-            Debug.WriteLine("Im Down");
-        }
-        else
-        {
+        // Normalize movement vector to prevent faster diagonal movement
+        if (moveVector != Vector3.Zero) moveVector.Normalize();
 
-        }
-
-        // Scrolling with Left Shift key (assuming you want to adjust speed)
-        if (originalMouseState.ScrollWheelValue < previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
+        // Adjust speed using the mouse scroll wheel (with Left Shift held)
+        MouseState currentMouseState = Mouse.GetState();
+        if (currentMouseState.ScrollWheelValue < previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
         {
             _speed += 1;
         }
-        else if (originalMouseState.ScrollWheelValue > previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
+        else if (currentMouseState.ScrollWheelValue > previousScrollValue && keyboardState.IsKeyDown(Keys.LeftShift))
         {
             _speed -= 1;
-            if (_speed < 1)
-                _speed = 1; // Ensure speed doesn't go below 1
+            if (_speed < 1) _speed = 1;
         }
-        previousScrollValue = originalMouseState.ScrollWheelValue;
+        previousScrollValue = currentMouseState.ScrollWheelValue;
 
-        // Update the player's position
+        // Update the player's position using the adjusted movement vector and speed
         _position += moveVector * _speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+    }
+
+    // Method to update the camera's rotation matrix
+    public void UpdateCameraRotation(Matrix newCameraRotation)
+    {
+        _cameraRotation = newCameraRotation;
     }
 }
