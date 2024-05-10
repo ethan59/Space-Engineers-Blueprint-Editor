@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\scripts\\core\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\core\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\scripts\\core\\fileloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\core\\fileloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\scripts\\core\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\core\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\scripts\\core\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\core\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|c:\\users\\psd-am\\documents\\github\\space-engineers-blueprint-editor\\scripts\\core\\buildgrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\core\\buildgrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\scripts\\player\\mousemovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:scripts\\player\\mousemovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\grid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B2F884F-DC35-4ADE-803C-604DA3831D9B}|SpaceEngineersShipBuilder.csproj|solutionrelative:grid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,17 +38,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\Program.cs",
+              "RelativeDocumentMoniker": "Scripts\\Core\\Program.cs",
+              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\Program.cs",
+              "RelativeToolTip": "Scripts\\Core\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T16:55:14.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileLoader.cs",
+              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\FileLoader.cs",
+              "RelativeDocumentMoniker": "Scripts\\Core\\FileLoader.cs",
+              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\FileLoader.cs",
+              "RelativeToolTip": "Scripts\\Core\\FileLoader.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAowJMAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T14:33:11.156Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Game1.cs",
-              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Game1.cs",
-              "RelativeDocumentMoniker": "Game1.cs",
-              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Game1.cs",
-              "RelativeToolTip": "Game1.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB8AAABOAAAA",
+              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\Game1.cs",
+              "RelativeDocumentMoniker": "Scripts\\Core\\Game1.cs",
+              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\Game1.cs",
+              "RelativeToolTip": "Scripts\\Core\\Game1.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAwIAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T14:44:00.395Z",
               "EditorCaption": ""
@@ -49,49 +83,53 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "UIManager.cs",
-              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\UIManager.cs",
-              "RelativeDocumentMoniker": "UIManager.cs",
-              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\UIManager.cs",
-              "RelativeToolTip": "UIManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
+              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\UIManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Core\\UIManager.cs",
+              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\UIManager.cs",
+              "RelativeToolTip": "Scripts\\Core\\UIManager.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwG0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.025Z"
+              "WhenOpened": "2024-05-09T14:44:01.025Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Scripts\\Player\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\PlayerMovement.cs",
               "RelativeToolTip": "Scripts\\Player\\PlayerMovement.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACcAAAAKAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.027Z"
+              "WhenOpened": "2024-05-09T14:44:01.027Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "MouseMovement.cs",
               "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\MouseMovement.cs",
               "RelativeDocumentMoniker": "Scripts\\Player\\MouseMovement.cs",
               "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Player\\MouseMovement.cs",
               "RelativeToolTip": "Scripts\\Player\\MouseMovement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.028Z"
+              "WhenOpened": "2024-05-09T14:44:01.028Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "grid.cs",
-              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\grid.cs",
-              "RelativeDocumentMoniker": "grid.cs",
-              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\grid.cs",
-              "RelativeToolTip": "grid.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAwDsAAAAJAAAA",
+              "DocumentIndex": 5,
+              "Title": "BuildGrid.cs",
+              "DocumentMoniker": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\BuildGrid.cs",
+              "RelativeDocumentMoniker": "Scripts\\Core\\BuildGrid.cs",
+              "ToolTip": "C:\\Users\\PSD-AM\\Documents\\GitHub\\Space-Engineers-Blueprint-Editor\\Scripts\\Core\\BuildGrid.cs",
+              "RelativeToolTip": "Scripts\\Core\\BuildGrid.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T14:44:01.029Z"
+              "WhenOpened": "2024-05-09T14:44:01.029Z",
+              "EditorCaption": ""
             }
           ]
         }

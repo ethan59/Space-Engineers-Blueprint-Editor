@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpaceEngineersShipBuilder
+namespace SpaceEngineersShipBuilder.Scripts.Core
 {
     public static class Program
     {
