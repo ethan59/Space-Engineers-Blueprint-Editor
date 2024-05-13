@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.IO;
+using System.Diagnostics;
 using SpaceEngineersShipBuilder.Scripts.Player;
 using Myra.Graphics2D.UI;
 
@@ -21,8 +21,9 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
         private bool _escapeKeyPreviouslyPressed = false;
         private Vector3 _cameraTarget;
         private Vector3 _upVector;
-        private Model _model;
         private Matrix _world, _view, _projection;
+
+        Texture2D _texture;
 
         public Game1()
         {
@@ -48,24 +49,19 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
 
         private void InitializeGameElements()
         {
-            // Initialize MouseMovement and Grid
-            _mouseMovement = new MouseMovement(0.1f, GraphicsDevice);
-
             const int gridSize = 30;
             const float cellSize = 1.0f;
             const float gridHeight = -2.0f;
+            Vector3 gridCenter = new Vector3(gridSize * cellSize / 2.0f, gridHeight, gridSize * cellSize / 2.0f);
 
-            Vector3 gridCenter = new Vector3(
-                gridSize * cellSize / 2.0f,
-                gridHeight,
-                gridSize * cellSize / 2.0f
-            );
+            string modelPath = "path_to_obj_file.obj";
 
+            _mouseMovement = new MouseMovement(0.1f, GraphicsDevice);
             _grid = new BuildGrid(GraphicsDevice, gridSize, cellSize, gridHeight, Color.Green);
             _playerMovement = new PlayerMovement(new Vector3(gridCenter.X, 0, gridCenter.Z), Vector3.Up);
-            // Inside your game's initialization code:
-            FileLoader fileLoader = new FileLoader(GraphicsDevice);
-            UIManager uiManager = new UIManager(this, fileLoader);
+            _fileLoader = new FileLoader(GraphicsDevice, _texture);
+            _uiManager = new UIManager(this, _fileLoader);
+            _fileLoader.LoadDataAsync(modelPath, () => Debug.WriteLine("File loading completed!"));
         }
 
         private void SetInitialCamera()
@@ -78,9 +74,7 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _model = Content.Load<Model>("cube");
-
-            base.LoadContent();
+            _texture = Content.Load<Texture2D>("pixilart-drawing");  // Load texture
         }
 
         protected override void Update(GameTime gameTime)
@@ -97,6 +91,13 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
                 _upVector = Vector3.Transform(Vector3.Up, cameraRotation);
                 _view = Matrix.CreateLookAt(_playerMovement.Position, _cameraTarget, _upVector);
             }
+            HandleInput();
+
+            base.Update(gameTime);
+        }
+        public void HandleInput()
+        {
+
 
             KeyboardState keyboardState = Keyboard.GetState();
             bool isEscapePressed = keyboardState.IsKeyDown(Keys.Escape);
@@ -105,7 +106,6 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             {
                 _isMouseCaptured = !_isMouseCaptured;
                 IsMouseVisible = !_isMouseCaptured;
-
                 if (_isMouseCaptured)
                 {
                     Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
@@ -113,35 +113,18 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             }
 
             _escapeKeyPreviouslyPressed = isEscapePressed;
-
-            base.Update(gameTime);
         }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
-            DrawModel(_model, _world, _view, _projection);
-            _fileLoader.Draw(_world, _view, _projection);
-            _uiManager.Render();
 
-            base.Draw(gameTime);
-        }
-
-        private void DrawModel(Model model, Matrix world, Matrix view, Matrix projection)
-        {
-            foreach (ModelMesh mesh in model.Meshes)
+            if (_fileLoader != null)
             {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.World = world;
-                    effect.View = view;
-                    effect.Projection = projection;
-                    effect.LightingEnabled = true;
-                    effect.TextureEnabled = true;
-                    _grid.Draw(view, projection);
-                }
-                mesh.Draw();
+                _fileLoader.Draw(_world, _view, _projection);
             }
+            _grid.Draw(_view,_projection);
+            _uiManager.Render();
+            base.Draw(gameTime);
         }
     }
 }

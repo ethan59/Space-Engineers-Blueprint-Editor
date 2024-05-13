@@ -4,6 +4,7 @@ using Myra.Graphics2D.UI;
 using Myra.Graphics2D.UI.File;
 using SpaceEngineersShipBuilder.Scripts.Core;
 using System;
+using System.Diagnostics;
 
 namespace SpaceEngineersShipBuilder
 {
@@ -80,7 +81,7 @@ namespace SpaceEngineersShipBuilder
                 if (fileDialog.Result)
                 {
                     string selectedFilePath = fileDialog.FilePath;
-                    await _fileLoader.LoadDataAsync(selectedFilePath, () => Console.WriteLine("File loading complete!"));
+                    await _fileLoader.LoadDataAsync(selectedFilePath, () => Debug.WriteLine("File loading complete!"));
                 }
                 else
                 {
