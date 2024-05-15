@@ -1,12 +1,12 @@
-﻿// File: UIManager.cs
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Myra.Graphics2D.UI.File;
 using Myra.Graphics2D.UI;
 using Myra;
+using SpaceEngineersShipBuilder.Scripts.Core;
 using System;
 using System.Diagnostics;
 
-namespace SpaceEngineersShipBuilder.Scripts.Core
+namespace SpaceEngineersShipBuilder
 {
     public class UIManager
     {

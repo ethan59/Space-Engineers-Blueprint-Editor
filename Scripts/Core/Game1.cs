@@ -17,19 +17,23 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
         private MouseMovement _mouseMovement;
         private UIManager _uiManager;
         private FileLoader _fileLoader;
+        private BuildingSystem _buildingSystem;
+
         private bool _isMouseCaptured = true;
         private bool _escapeKeyPreviouslyPressed = false;
+        private bool _gKeyPreviouslyPressed = false;
+
         private Vector3 _cameraTarget;
         private Vector3 _upVector;
         private Matrix _world, _view, _projection;
 
-        Texture2D _texture;
+        private Texture2D _texture;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this)
             {
-                IsFullScreen = true
+                IsFullScreen = false
             };
             Content.RootDirectory = "Content";
             IsMouseVisible = false;
@@ -61,6 +65,7 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             _playerMovement = new PlayerMovement(new Vector3(gridCenter.X, 0, gridCenter.Z), Vector3.Up);
             _fileLoader = new FileLoader(GraphicsDevice, _texture);
             _uiManager = new UIManager(this, _fileLoader);
+            _buildingSystem = new BuildingSystem(GraphicsDevice, Content);
             _fileLoader.LoadDataAsync(modelPath, () => Debug.WriteLine("File loading completed!"));
         }
 
@@ -79,28 +84,34 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
 
         protected override void Update(GameTime gameTime)
         {
-            if (_isMouseCaptured)
-            {
-                _mouseMovement.Update(gameTime);
-                Matrix cameraRotation = _mouseMovement.GetCameraRotationMatrix();
-                _playerMovement.UpdateCameraRotation(cameraRotation);
-                _playerMovement.Update(gameTime);
-
-                Vector3 cameraForward = Vector3.Transform(Vector3.Forward, cameraRotation);
-                _cameraTarget = _playerMovement.Position + cameraForward;
-                _upVector = Vector3.Transform(Vector3.Up, cameraRotation);
-                _view = Matrix.CreateLookAt(_playerMovement.Position, _cameraTarget, _upVector);
-            }
             HandleInput();
+
+            if (!_uiManager.IsItemPanelVisible)
+            {
+                if (_isMouseCaptured)
+                {
+                    _mouseMovement.Update(gameTime);
+                    Matrix cameraRotation = _mouseMovement.GetCameraRotationMatrix();
+                    _playerMovement.UpdateCameraRotation(cameraRotation);
+                    _playerMovement.Update(gameTime);
+
+                    Vector3 cameraForward = Vector3.Transform(Vector3.Forward, cameraRotation);
+                    _cameraTarget = _playerMovement.Position + cameraForward;
+                    _upVector = Vector3.Transform(Vector3.Up, cameraRotation);
+                    _view = Matrix.CreateLookAt(_playerMovement.Position, _cameraTarget, _upVector);
+                }
+
+                _buildingSystem.Update(gameTime, _view, _mouseMovement.GetCameraRotationMatrix(), _playerMovement.Position);
+            }
 
             base.Update(gameTime);
         }
-        public void HandleInput()
+
+        private void HandleInput()
         {
-
-
             KeyboardState keyboardState = Keyboard.GetState();
             bool isEscapePressed = keyboardState.IsKeyDown(Keys.Escape);
+            bool isGPressed = keyboardState.IsKeyDown(Keys.G);
 
             if (isEscapePressed && !_escapeKeyPreviouslyPressed)
             {
@@ -108,21 +119,39 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
                 IsMouseVisible = !_isMouseCaptured;
                 if (_isMouseCaptured)
                 {
-                    Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+                    Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.DisplayMode.Height / 2);
+                }
+            }
+
+            if (isGPressed && !_gKeyPreviouslyPressed)
+            {
+                _uiManager.ToggleItemPanel();
+                IsMouseVisible = _uiManager.IsItemPanelVisible;
+                _isMouseCaptured = !_uiManager.IsItemPanelVisible;
+
+                if (!_isMouseCaptured)
+                {
+                    Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.DisplayMode.Height / 2);
                 }
             }
 
             _escapeKeyPreviouslyPressed = isEscapePressed;
+            _gKeyPreviouslyPressed = isGPressed;
         }
+
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
-
+            GraphicsDevice.Clear(new Color(23, 45, 68));
             if (_fileLoader != null)
             {
                 _fileLoader.Draw(_world, _view, _projection);
             }
-            _grid.Draw(_view,_projection);
+            if (!_uiManager.IsItemPanelVisible)
+            {
+                _buildingSystem.Draw(_world, _view, _projection, _mouseMovement.GetCameraRotationMatrix());
+                _grid.Draw(_view, _projection);
+            }
+
             _uiManager.Render();
             base.Draw(gameTime);
         }
