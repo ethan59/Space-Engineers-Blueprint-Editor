@@ -18,11 +18,11 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
                 Background = new SolidBrush(new Color(0, 0, 0, 128)) // Semi-transparent background
             };
 
-            var grid = new Grid
+            var mainGrid = new Grid
             {
                 RowSpacing = 8,
                 ColumnSpacing = 8,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Center
             };
 
@@ -30,10 +30,28 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             var toolbarLabel = new Label
             {
                 Text = "Toolbar Config",
+                GridColumn = 1,
+                GridRow = 0,
+                GridColumnSpan = 2,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            // Search field
+            var searchLabel = new Label
+            {
+                Text = "Search:",
                 GridColumn = 0,
                 GridRow = 0,
-                GridColumnSpan = 3,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            var searchField = new TextBox
+            {
+                GridColumn = 0,
+                GridRow = 1,
+                Width = 200,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Center
             };
 
@@ -41,10 +59,10 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             var toolsList = new ListBox
             {
                 GridColumn = 0,
-                GridRow = 1,
+                GridRow = 2,
                 Width = 200,
                 Height = 500,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Center
             };
 
@@ -79,10 +97,11 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
             {
                 GridColumn = 1,
                 GridRow = 1,
+                RowSpan = 2,
                 ColumnSpacing = 8,
                 RowSpacing = 8,
                 ShowGridLines = true,
-                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Center
             };
 
@@ -108,62 +127,20 @@ namespace SpaceEngineersShipBuilder.Scripts.Core
                     GridColumn = column,
                     GridRow = row,
                     HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Width = 100, // Increase item size
+                    Height = 100  // Increase item size
                 });
             }
 
-            // Search field
-            var searchLabel = new Label
-            {
-                Text = "Search:",
-                GridColumn = 2,
-                GridRow = 0,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            var searchField = new TextBox
-            {
-                GridColumn = 2,
-                GridRow = 1,
-                Width = 200,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            // Large Ship/Station panel
-            var largeShipPanel = new ListBox
-            {
-                GridColumn = 2,
-                GridRow = 1,
-                Width = 200,
-                Height = 500,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-
-            // Adding items to the large ship panel
-            var largeShipItems = new string[]
-            {
-                "LIGHT ARMOR BLOCK\nComponents\nRequired\nSteel Plate\n25",
-                "LIGHT ARMOR SLOPE\nComponents\nRequired\nSteel Plate\n13",
-                "LIGHT ARMOR CORNER\nComponents\nRequired\nSteel Plate\n4",
-                "LIGHT ARMOR INV. CORNER\nComponents\nRequired\nSteel Plate\n21"
-            };
-
-            foreach (var item in largeShipItems)
-            {
-                largeShipPanel.Items.Add(new ListItem(item));
-            }
-
             // Add elements to main grid
-            grid.Widgets.Add(toolbarLabel);
-            grid.Widgets.Add(toolsList);
-            grid.Widgets.Add(tabContentGrid);
-            grid.Widgets.Add(searchLabel);
-            grid.Widgets.Add(searchField);
-            grid.Widgets.Add(largeShipPanel);
+            mainGrid.Widgets.Add(toolbarLabel);
+            mainGrid.Widgets.Add(searchLabel);
+            mainGrid.Widgets.Add(searchField);
+            mainGrid.Widgets.Add(toolsList);
+            mainGrid.Widgets.Add(tabContentGrid);
 
-            _rootPanel.Widgets.Add(grid);
+            _rootPanel.Widgets.Add(mainGrid);
             _desktop = new Desktop
             {
                 Root = _rootPanel
